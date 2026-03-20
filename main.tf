@@ -32,6 +32,10 @@ resource "docker_image" "coder" {
 # Persistent volume for Coder data
 resource "docker_volume" "coder_data" {
   name = "coder-data"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Run the Coder server container

@@ -1,0 +1,8 @@
+# Add your Python libraries here
+# Example:
+# numpy
+# pandas
+# requests
+numpy
+pandas
+pyspark==3.5.3
