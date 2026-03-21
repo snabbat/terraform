@@ -9,6 +9,10 @@ terraform {
 
 provider "docker" {}
 
+data "docker_network" "dpm" {
+  name = "plateforme_dpm-network"
+}
+
 # Build the Coder server image
 resource "docker_image" "coder" {
   name = "${var.image_name}:${var.image_tag}"
@@ -65,6 +69,10 @@ resource "docker_container" "coder" {
   volumes {
     host_path      = "/var/run/docker.sock"
     container_path = "/var/run/docker.sock"
+  }
+
+  networks_advanced {
+    name = data.docker_network.dpm.name
   }
 
   restart = "unless-stopped"
