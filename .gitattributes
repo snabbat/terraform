@@ -1,0 +1,5 @@
+# Shell scripts and Dockerfiles run inside Linux containers — keep LF endings
+# so a checkout on Windows doesn't inject CRLF and break the shebang/build.
+*.sh            text eol=lf
+Dockerfile      text eol=lf
+docker-entrypoint.sh text eol=lf
